@@ -81,5 +81,3 @@ function getRandomNum(){
 // function determineWinner(){
 //     board.forEach(e)
 // }
-
-//test
