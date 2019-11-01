@@ -6,7 +6,7 @@ const ATTEMPT_LIMIT = 9;
 
 /*----- app's state (variables) -----*/
 let turn, winner, board, attempts = 0;
-// turn = 1
+
 
 /*----- cached element references -----*/
 
@@ -23,6 +23,7 @@ grid.addEventListener('click', handleClick);
 
 
 // /*----- functions -----*/
+
 init()
 
 function init() {
@@ -81,12 +82,8 @@ function handleClick(evt) {
         let evtId = evt.target.id;
         let column = parseInt(evtId[1]);
         let row = parseInt(evtId[3]);
-        // cells.forEach(function (e) {
-        //     if (evtId === e.id) {
-                board[column][row] = turn;
-        //     }
-            attempts++;
-        // });
+        board[column][row] = turn;
+        attempts++;
         evt.target.className = 'disabled';
     }
     gameOver();
@@ -112,7 +109,7 @@ function checkRowWinner() {
     if (Math.abs(sum) === BOARD_SIZE){
         message.textContent = turn + " Wins!";
         winner = turn;
-        console.log(message);
+        // console.log(message);
     }
 };
 };
@@ -126,7 +123,7 @@ function checkColumnWinner(){
   if (Math.abs(sum) === BOARD_SIZE){
         message.textContent = turn + " Wins!";
         winner = turn;
-        console.log(message);
+        // console.log(message);
     }
 };
 };
@@ -141,14 +138,9 @@ function checkDiagonals(){
     if (Math.abs(diagonal1) === 3 || Math.abs(diagonal2) === 3){
         message.textContent = turn + " Wins!";
         winner = turn;
-        console.log(message);
+        // console.log(message);
     }
-    // let downSum = 0;
-    // let upSum = 0;
-    // for(let column = 0, row = 0; column < BOARD_SIZE, row < BOARD_SIZE; column++, row++){
-    //     let sum = 0;
-        
-    // }
+
 };
 
 function checkTie(){
@@ -162,8 +154,6 @@ for(i = 0; i < BOARD_SIZE; i++){
         return message.textContent = "It's a tie!";
     };
 };
-
-// };
 
 
 function gameOver(){
