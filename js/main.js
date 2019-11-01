@@ -1,10 +1,12 @@
 
 /*----- constants -----*/
+
 const player = [-1, 1];
 const BOARD_SIZE = 3;
 const ATTEMPT_LIMIT = 9;
 
 /*----- app's state (variables) -----*/
+
 let turn, winner, board, attempts = 0;
 
 
@@ -21,17 +23,13 @@ playAgain.addEventListener('click', init);
 grid.addEventListener('click', handleClick);
 
 
-
 // /*----- functions -----*/
 
 init()
 
 function init() {
-    // sets user to random
     turn = getRandomNum();
-    //resets the winner
     winner = null;
-    //clears the board
     board = [
         [0, 0, 0],
         [0, 0, 0],
@@ -39,7 +37,6 @@ function init() {
     ]
     for (let i = 0; i < cells.length; i++){
         cells[i].className = 'cell';
-        //HTMLElement.className overwrites the entire current classname. HTMLElement.classList.add will add onto the current class names and HTMLEElement.classList.remove will only remove the specified class name if it exists.
     };
     message.textContent = 'Good luck!';
     render();
@@ -93,12 +90,9 @@ function handleClick(evt) {
 }
 
 function getRandomNum() {
-    //Math.random() returns between 0-0.9999999. If multiplied by 2, returns between 0-1.99999999. Math.floor will round down, so we will either get between 0 and 1. 
     let random = Math.floor(Math.random() * 2);
-    //random ? 1 : -1 translates to ==> if random is true, then return 1 else return -1. 1 is considered 'true' and 0 is considered 'false'
     return random ? 1 : -1;
 };
-
 
 function checkRowWinner() {
   for(let row = 0; row < BOARD_SIZE; row++){
@@ -109,7 +103,6 @@ function checkRowWinner() {
     if (Math.abs(sum) === BOARD_SIZE){
         message.textContent = turn + " Wins!";
         winner = turn;
-        // console.log(message);
     }
 };
 };
@@ -123,7 +116,6 @@ function checkColumnWinner(){
   if (Math.abs(sum) === BOARD_SIZE){
         message.textContent = turn + " Wins!";
         winner = turn;
-        // console.log(message);
     }
 };
 };
@@ -138,9 +130,7 @@ function checkDiagonals(){
     if (Math.abs(diagonal1) === 3 || Math.abs(diagonal2) === 3){
         message.textContent = turn + " Wins!";
         winner = turn;
-        // console.log(message);
     }
-
 };
 
 function checkTie(){
